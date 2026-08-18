@@ -135,6 +135,7 @@ MAILERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://habit-tracker-one-silk.vercel.app",
 ]
 
 REST_FRAMEWORK = {
