@@ -15,10 +15,11 @@ function App() {
     setError("")
 
     const response = await fetch(
-      "http://127.0.0.1:8000/api/token/",
+      "https://habit-tracker-jq9r.onrender.com/api/token/",
       {
         method: "POST",
         headers: {
+          
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -41,7 +42,7 @@ function App() {
   useEffect(() => {
   if (!token) return
 
-  fetch("http://127.0.0.1:8000/api/habits/", {
+  fetch("https://habit-tracker-jq9r.onrender.com/api/habits/", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -64,7 +65,7 @@ function App() {
  useEffect(() => {
   if (!token) return
 
-  fetch("http://127.0.0.1:8000/api/habit-logs/", {
+  fetch("https://habit-tracker-jq9r.onrender.com/api/habit-logs/", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -96,7 +97,7 @@ function App() {
 
   const toggleHabit = async (habitId, date) => {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/habit-logs/",
+      "https://habit-tracker-jq9r.onrender.com/api/habit-logs/",
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -112,7 +113,7 @@ function App() {
 
     if (existingLog) {
       await fetch(
-        `http://127.0.0.1:8000/api/habit-logs/${existingLog.id}/`,
+        `https://habit-tracker-jq9r.onrender.com/api/habit-logs/${existingLog.id}/`,
         {
           method: "PATCH",
           headers: {
@@ -126,7 +127,7 @@ function App() {
       )
     } else {
       await fetch(
-        "http://127.0.0.1:8000/api/habit-logs/",
+        "https://habit-tracker-jq9r.onrender.com/api/habit-logs/",
         {
           method: "POST",
           headers: {
@@ -202,7 +203,7 @@ function App() {
     if (!newHabit.trim()) return
 
     const response = await fetch(
-      "http://127.0.0.1:8000/api/habits/",
+      "https://habit-tracker-jq9r.onrender.com/api/habits/",
       {
         method: "POST",
         headers: {
