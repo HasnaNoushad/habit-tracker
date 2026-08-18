@@ -135,8 +135,9 @@ MAILERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://habit-tracker-i14k0qf32-hasna7.vercel.app",
+    "https://habit-tracker-one-silk.vercel.app",
 ]
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
