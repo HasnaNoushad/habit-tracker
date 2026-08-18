@@ -4,168 +4,560 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6fb;
-  color: #1f2937;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  background: #f6f7fc;
+  color: #45465c;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }
 
 #root {
   min-height: 100vh;
 }
 
-/* Login */
+/* =========================
+   AUTH PAGE
+   ========================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, #ebe9fa 0, transparent 28%),
+    radial-gradient(circle at 85% 80%, #dfeaf8 0, transparent 30%),
+    #f6f7fc;
+}
 
 .login {
-  width: 380px;
-  margin: 100px auto;
-  padding: 40px;
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: min(420px, 100%);
+  padding: 42px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e6e5f2;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(82, 83, 125, 0.12);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.auth-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eeeafb;
+  border-radius: 22px;
+  font-size: 28px;
+}
+
+.little-label {
+  margin: 0 0 8px;
+  color: #8b86b7;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 
 .login h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #4f46e5;
+  margin: 0;
+  color: #625f91;
+  font-size: 31px;
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  margin: 12px 0 28px;
+  color: #85869a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.login form {
+  margin: 0;
 }
 
 .login input {
   display: block;
   width: 100%;
-  padding: 13px;
-  margin-bottom: 15px;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
+  padding: 14px 16px;
+  margin-bottom: 13px;
+  border: 1px solid #dedeee;
+  border-radius: 15px;
+  background: #fafaff;
+  color: #45465c;
   font-size: 15px;
   outline: none;
+  transition: 0.2s ease;
+}
+
+.login input::placeholder {
+  color: #aaaabc;
 }
 
 .login input:focus {
-  border-color: #4f46e5;
+  border-color: #aaa5d5;
+  box-shadow: 0 0 0 4px rgba(170, 165, 213, 0.12);
+  background: white;
 }
 
-.login button {
+.primary-button {
   width: 100%;
+  padding: 14px;
+  margin-top: 4px;
+  background: #817bb8;
+  color: white;
+  border-radius: 15px;
+  font-weight: bold;
 }
 
-/* Main app */
+.primary-button:hover {
+  background: #7069a8;
+}
 
-h1 {
+.message {
+  margin: 15px 0 0;
+  color: #7d6d9f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.switch-text {
+  margin: 24px 0 0;
+  color: #85869a;
+  font-size: 13px;
+}
+
+.text-button {
+  padding: 0;
+  background: transparent;
+  color: #716ba8;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.text-button:hover {
+  background: transparent;
+  color: #57518d;
+}
+
+.auth-decoration {
+  position: absolute;
+  color: #c3bee5;
+  font-size: 34px;
+  opacity: 0.65;
+}
+
+.decoration-one {
+  top: 15%;
+  left: 13%;
+}
+
+.decoration-two {
+  right: 14%;
+  bottom: 18%;
+}
+
+/* =========================
+   MAIN APP
+   ========================= */
+
+.app-page {
+  min-height: 100vh;
+  padding: 30px 20px 50px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 5% 5%, #ebe9fa 0, transparent 22%),
+    radial-gradient(circle at 95% 45%, #e1ebf8 0, transparent 25%),
+    #f6f7fc;
+}
+
+.page-decoration {
+  position: absolute;
+  color: #c5c0e5;
+  font-size: 28px;
+  opacity: 0.55;
+}
+
+.decoration-three {
+  top: 90px;
+  left: 7%;
+}
+
+.decoration-four {
+  top: 190px;
+  right: 8%;
+}
+
+.app-header {
   text-align: center;
-  margin: 35px 0 20px;
-  color: #312e81;
-}
-
-/* Add habit */
-
-form:not(.login form) {
-  width: 90%;
   max-width: 700px;
-  margin: 0 auto 20px;
-  display: flex;
-  gap: 10px;
+  margin: 30px auto 35px;
+  position: relative;
+  z-index: 1;
 }
 
-form:not(.login form) input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
+.app-header h1 {
+  margin: 0;
+  color: #625f91;
+  font-size: clamp(30px, 5vw, 43px);
+  line-height: 1.15;
+}
+
+.current-date {
+  margin: 0 0 12px;
+  color: #9292aa;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  margin: 12px 0 0;
+  color: #88899c;
   font-size: 15px;
 }
 
-/* Buttons */
+/* =========================
+   ADD HABIT CARD
+   ========================= */
 
-button {
-  padding: 11px 20px;
-  border: none;
-  border-radius: 9px;
-  background: #4f46e5;
+.habit-input-card {
+  width: min(900px, 94%);
+  margin: 0 auto 20px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e6e5f2;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(82, 83, 125, 0.08);
+}
+
+.habit-input-card > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 17px;
+}
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eeeafb;
+  border-radius: 15px;
+  font-size: 21px;
+}
+
+.habit-input-card h2 {
+  margin: 0 0 3px;
+  color: #5d5b7f;
+  font-size: 17px;
+}
+
+.habit-input-card p {
+  margin: 0;
+  color: #9798a9;
+  font-size: 12px;
+}
+
+.habit-input-card form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+}
+
+.habit-input-card input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #dedeee;
+  border-radius: 15px;
+  background: #fafaff;
+  outline: none;
+  color: #45465c;
+}
+
+.habit-input-card input:focus {
+  border-color: #aaa5d5;
+  box-shadow: 0 0 0 4px rgba(170, 165, 213, 0.1);
+}
+
+.add-button {
+  white-space: nowrap;
+  background: #817bb8;
   color: white;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.2s;
+  border-radius: 15px;
+  font-weight: bold;
+  padding: 14px 18px;
 }
 
-button:hover {
-  background: #3730a3;
-  transform: translateY(-1px);
+.add-button:hover {
+  background: #7069a8;
 }
 
-/* Logout */
+/* =========================
+   ACTION BAR
+   ========================= */
 
-h1 + button {
-  display: block;
-  margin: 0 auto 25px;
-  background: #ef4444;
+.top-actions {
+  width: min(900px, 94%);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #9293a5;
+  font-size: 13px;
 }
 
-h1 + button:hover {
-  background: #dc2626;
+.logout-button {
+  padding: 9px 15px;
+  background: #d9e4f2;
+  color: #596982;
+  font-size: 12px;
+  border-radius: 12px;
 }
 
-/* Habit table */
+.logout-button:hover {
+  background: #cad9eb;
+}
+
+/* =========================
+   HABIT BOARD
+   ========================= */
+
+.habit-board {
+  width: min(1100px, 96%);
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e5e4f1;
+  border-radius: 27px;
+  box-shadow: 0 15px 40px rgba(82, 83, 125, 0.08);
+  overflow: hidden;
+}
+
+.board-heading {
+  padding: 24px 25px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.board-heading h2 {
+  margin: 0;
+  color: #5d5b7f;
+  font-size: 22px;
+}
+
+.week-decoration {
+  color: #a5a0cd;
+  letter-spacing: 5px;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
 
 table {
-  width: 90%;
-  margin: 20px auto 40px;
+  width: 100%;
+  min-width: 680px;
   border-collapse: collapse;
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
 }
 
 th {
-  padding: 15px;
-  background: #4f46e5;
-  color: white;
-  font-weight: 600;
+  padding: 14px 10px;
+  background: #eeeafb;
+  color: #68648f;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+
+th:first-child {
+  text-align: left;
+  padding-left: 25px;
 }
 
 td {
-  padding: 16px;
+  padding: 16px 10px;
   text-align: center;
-  border-bottom: 1px solid #eef0f4;
+  border-bottom: 1px solid #f0eff6;
+  color: #77788c;
 }
 
-td:first-child {
+tr:last-child td {
+  border-bottom: none;
+}
+
+.habit-name {
+  width: 28%;
   text-align: left;
-  font-weight: 600;
+  padding-left: 25px;
+  color: #575675;
+  font-weight: bold;
 }
 
-td:not(:first-child) {
+.habit-cell {
   cursor: pointer;
-  font-size: 22px;
-  transition: 0.15s;
+  font-size: 20px;
+  color: #c4c4d1;
+  transition: 0.18s ease;
 }
 
-td:not(:first-child):hover {
-  background: #eef2ff;
-  transform: scale(1.05);
+.habit-cell:hover {
+  background: #f5f3fc;
+  color: #9d97ca;
+  transform: scale(1.08);
 }
 
-/* Mobile */
+.habit-cell.completed {
+  color: #817bb8;
+  font-size: 23px;
+  background: #faf9ff;
+}
+
+.habit-cell.completed:hover {
+  color: #7069a8;
+}
+
+.board-footer {
+  margin: 0;
+  padding: 17px 25px;
+  color: #a09fb0;
+  background: #fbfaff;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* =========================
+   EMPTY STATE
+   ========================= */
+
+.empty-state {
+  width: min(600px, 92%);
+  margin: 30px auto;
+  padding: 50px 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e4f1;
+  border-radius: 28px;
+  box-shadow: 0 12px 35px rgba(82, 83, 125, 0.07);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.empty-state h2 {
+  margin: 0 0 8px;
+  color: #62608d;
+}
+
+.empty-state p {
+  margin: 0;
+  color: #9293a5;
+  font-size: 14px;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+  margin-top: 35px;
+  text-align: center;
+  color: #a4a3b4;
+  font-size: 12px;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 700px) {
+  .auth-page {
+    padding: 20px;
+  }
+
   .login {
-    width: 90%;
-    margin: 60px auto;
-    padding: 25px;
+    padding: 32px 24px;
+    border-radius: 24px;
   }
 
-  table {
+  .login h1 {
+    font-size: 27px;
+  }
+
+  .app-page {
+    padding: 20px 12px 40px;
+  }
+
+  .app-header {
+    margin-top: 25px;
+  }
+
+  .app-header h1 {
+    font-size: 30px;
+  }
+
+  .current-date {
+    font-size: 12px;
+  }
+
+  .habit-input-card {
     width: 96%;
-    font-size: 13px;
+    padding: 18px;
   }
 
-  th,
-  td {
-    padding: 10px 6px;
+  .habit-input-card form {
+    flex-direction: column;
   }
 
-  form:not(.login form) {
-    width: 90%;
+  .add-button {
+    width: 100%;
+  }
+
+  .top-actions {
+    width: 96%;
+  }
+
+  .habit-board {
+    width: 98%;
+    border-radius: 22px;
+  }
+
+  .board-heading {
+    padding: 20px;
+  }
+
+  .habit-name {
+    padding-left: 18px;
+  }
+
+  th:first-child {
+    padding-left: 18px;
+  }
+
+  .page-decoration {
+    display: none;
   }
 }
