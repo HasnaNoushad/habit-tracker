@@ -1,8 +1,7 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 
 from .models import Habit, HabitLog
 from .serializers import HabitSerializer, HabitLogSerializer, RegisterSerializer
@@ -15,6 +14,7 @@ class HabitViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Habit.objects.filter(owner=self.request.user)
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -32,6 +32,7 @@ class HabitLogViewSet(viewsets.ModelViewSet):
 
 class RegisterView(APIView):
     def post(self, request):
+        
         serializer = RegisterSerializer(data=request.data)
 
         if serializer.is_valid():

@@ -5,6 +5,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("access_token"))
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [isRegistering, setIsRegistering] = useState(false)
   const [completed, setCompleted] = useState({})
   const [habits, setHabits] = useState([])
   const [newHabit, setNewHabit] = useState("")
@@ -39,6 +40,39 @@ function App() {
     }
   }
 
+const register = async (e) => {
+  e.preventDefault()
+  setError("")
+
+  const response = await fetch(
+    "https://habit-tracker-jq9r.onrender.com/api/register/",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    }
+  )
+
+  const data = await response.json()
+
+  if (response.ok) {
+    setIsRegistering(false)
+    setUsername("")
+    setPassword("")
+    setError("Registration successful! You can now log in.")
+  } else {
+    setError(
+      data.username?.[0] ||
+      data.password?.[0] ||
+      "Registration failed"
+    )
+  }
+}
   useEffect(() => {
   if (!token) return
 
@@ -152,11 +186,14 @@ function App() {
   }
 
   if (!token) {
-    return (
-      <div className="login">
-        <h1>Habit Tracker</h1>
+  return (
+    <div className="login">
+      <h1>Habit Tracker</h1>
 
+      {!isRegistering ? (
         <form onSubmit={login}>
+          <h2>Login</h2>
+
           <input
             type="text"
             placeholder="Username"
@@ -174,10 +211,59 @@ function App() {
           <button type="submit">Login</button>
 
           {error && <p>{error}</p>}
+
+          <p>
+            Don't have an account?{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setIsRegistering(true)
+                setError("")
+              }}
+            >
+              Register
+            </button>
+          </p>
         </form>
-      </div>
-    )
-  }
+      ) : (
+        <form onSubmit={register}>
+          <h2>Create Account</h2>
+
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button type="submit">Register</button>
+
+          {error && <p>{error}</p>}
+
+          <p>
+            Already have an account?{" "}
+            <button
+              type="button"
+              onClick={() => {
+                setIsRegistering(false)
+                setError("")
+              }}
+            >
+              Login
+            </button>
+          </p>
+        </form>
+      )}
+    </div>
+  )
+}
 
   const days = []
 
